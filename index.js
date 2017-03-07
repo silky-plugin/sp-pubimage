@@ -13,7 +13,9 @@ exports.registerPlugin = (cli, options)=>{
       }
       let moduleImagesDir = _path.join(cli.cwd(), cli.options.pubModulesDir, key, "images")
       let outputImageDir =  _path.join(cli.options.buildConfig.outdir, "images", key)
-      _fs.copySync(moduleImagesDir, outputImageDir)
+      if(_fs.existsSync(moduleImagesDir)){
+        _fs.copySync(moduleImagesDir, outputImageDir)
+      } 
     }
     cb(null)
   }, 1)
