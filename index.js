@@ -15,6 +15,7 @@ exports.registerPlugin = (cli, options)=>{
       let outputImageDir =  _path.join(cli.options.buildConfig.outdir, "images", key)
       if(_fs.existsSync(moduleImagesDir)){
         _fs.copySync(moduleImagesDir, outputImageDir)
+        cli.log.info(`pub modules copy dir '${key}/images' to '/images/${key}'`)
       } 
     }
     cb(null)
