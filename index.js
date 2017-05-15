@@ -11,11 +11,11 @@ exports.registerPlugin = (cli, options)=>{
       if(key.indexOf('sp') == 0){
         continue
       }
-      let moduleImagesDir = _path.join(cli.cwd(), cli.options.pubModulesDir, key, "images")
-      let outputImageDir =  _path.join(cli.options.buildConfig.outdir, "images", key)
+      let moduleImagesDir = _path.join(cli.cwd(), cli.options.pubModulesDir, key, "image")
+      let outputImageDir =  _path.join(cli.options.buildConfig.outdir, "image", key)
       if(_fs.existsSync(moduleImagesDir)){
         _fs.copySync(moduleImagesDir, outputImageDir)
-        cli.log.info(`pub modules copy dir '${key}/images' to '/images/${key}'`)
+        cli.log.info(`pub modules copy dir '${key}/image' to '/image/${key}'`)
       } 
     }
     cb(null)
